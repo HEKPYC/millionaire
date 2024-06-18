@@ -313,6 +313,18 @@ namespace QuizProgram
             }
         }
 
+        public List<string> Read_TopicFromDataBase()
+        {
+            List<string> topics;
+
+            using (var context = new DataBaseContext())
+            {
+                topics = context.Questions.Select(q => q.TopicName).Distinct().ToList();
+            }
+
+            return topics;
+        }
+
         public void Add_UserToDataBase(string surname, string name, string login, string password, string status)
         {
             try

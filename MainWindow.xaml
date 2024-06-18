@@ -38,6 +38,8 @@
         <Label Content="3." HorizontalAlignment="Left" Margin="316,118,0,0" VerticalAlignment="Top" Width="21"/>
         <Label Content="4." HorizontalAlignment="Left" Margin="316,142,0,0" VerticalAlignment="Top" Width="21"/>
         <Label Name="AdminLabel" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <ComboBox x:Name="topicsComboBox" HorizontalAlignment="Left" Margin="563,76,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="ShowTopicsButton" Content="Show" HorizontalAlignment="Left" Margin="586,107,0,0" VerticalAlignment="Top" Width="74" Click="ShowTopicsButton_Click"/>
 
     </Grid>
 </Window>

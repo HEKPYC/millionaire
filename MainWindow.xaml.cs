@@ -126,5 +126,11 @@ namespace QuizProgram
             RegistrationWindow registrationWindow = new RegistrationWindow();
             registrationWindow.Show();
         }
+
+        private void ShowTopicsButton_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> topics = dataBase.Read_TopicFromDataBase();
+            topicsComboBox.ItemsSource = topics;
+        }
     }
 }
