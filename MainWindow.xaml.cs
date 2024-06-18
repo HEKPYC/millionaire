@@ -21,10 +21,15 @@ namespace QuizProgram
     public partial class MainWindow : Window
     {
         DataBase dataBase;
-        public MainWindow()
+        User mainUser;
+        public MainWindow(User user)
         {
             InitializeComponent();
             dataBase = new DataBase();
+            mainUser = user;
+
+            AdminLabel.Content = user.Name + " " + user.Surname;
+            
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

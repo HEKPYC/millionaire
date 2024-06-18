@@ -5,28 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizProgram"
         mc:Ignorable="d"
-        Title="MainWindow" Height="575" Width="850">
+        Title="MainWindow" Height="575" Width="850" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBox x:Name="questionText" HorizontalAlignment="Left" Margin="112,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="AddButton" Content="Add" HorizontalAlignment="Left" Margin="134,134,0,0" VerticalAlignment="Top" Width="76" Click="AddButton_Click"/>
-        <TextBox x:Name="topicNameText" HorizontalAlignment="Left" Margin="112,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="difficultyLevelText" HorizontalAlignment="Left" Margin="112,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="rightAnswerText" HorizontalAlignment="Left" Margin="112,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ListBox x:Name="questionsList" DisplayMemberPath="TextQuestion" Margin="35,209,35,236"/>
-        <Button Content="Show" HorizontalAlignment="Center" Margin="0,328,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="135,159,0,0" VerticalAlignment="Top" Width="75" Click="deleteButton_Click"/>
-        <Button x:Name="updateButton" Content="Update" HorizontalAlignment="Left" Margin="135,184,0,0" VerticalAlignment="Top" Width="75" Click="updateButton_Click"/>
+        <TextBox x:Name="questionText" HorizontalAlignment="Left" Margin="118,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="AddButton" Content="Add" HorizontalAlignment="Left" Margin="140,168,0,0" VerticalAlignment="Top" Width="76" Click="AddButton_Click"/>
+        <TextBox x:Name="topicNameText" HorizontalAlignment="Left" Margin="118,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="difficultyLevelText" HorizontalAlignment="Left" Margin="118,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="rightAnswerText" HorizontalAlignment="Left" Margin="118,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ListBox x:Name="questionsList" DisplayMemberPath="TextQuestion" Margin="41,244,29,201"/>
+        <Button Content="Show" HorizontalAlignment="Center" Margin="0,362,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
+        <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="141,194,0,0" VerticalAlignment="Top" Width="75" Click="deleteButton_Click"/>
+        <Button x:Name="updateButton" Content="Update" HorizontalAlignment="Left" Margin="141,218,0,0" VerticalAlignment="Top" Width="75" Click="updateButton_Click"/>
 
-        <TextBox x:Name="answer1Text" HorizontalAlignment="Left" Margin="517,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="answer2Text" HorizontalAlignment="Left" Margin="517,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="answer3Text" HorizontalAlignment="Left" Margin="517,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="answer4Text" HorizontalAlignment="Left" Margin="517,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="AddAnswerButton" Content="Add" HorizontalAlignment="Left" Margin="539,134,0,0" VerticalAlignment="Top" Width="75" Click="AddAnswerButton_Click"/>
-        <ListBox x:Name="answersList" DisplayMemberPath="AnswerText" Margin="35,372,35,73"/>
-        <Button x:Name="AnswersButton" Content="Show" HorizontalAlignment="Center" Margin="0,491,0,0" VerticalAlignment="Top" Width="75" Click="AnswersButton_Click"/>
-        <Button x:Name="UpdateAnswerButton" Content="Update" HorizontalAlignment="Left" Margin="539,159,0,0" VerticalAlignment="Top" Width="75" Click="UpdateAnswerButton_Click"/>
-        <Button x:Name="InformationWindowButton" Content="Information" HorizontalAlignment="Left" Margin="740,36,0,0" VerticalAlignment="Top" Width="75" Click="InformationWindowButton_Click"/>
-        <Button x:Name="RegistrationWindowButton" Content="Registration" HorizontalAlignment="Left" Margin="740,61,0,0" VerticalAlignment="Top" Width="75" Click="RegistrationWindowButton_Click"/>
+        <TextBox x:Name="answer1Text" HorizontalAlignment="Left" Margin="350,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="answer2Text" HorizontalAlignment="Left" Margin="350,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="answer3Text" HorizontalAlignment="Left" Margin="350,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="answer4Text" HorizontalAlignment="Left" Margin="350,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="AddAnswerButton" Content="Add" HorizontalAlignment="Left" Margin="372,168,0,0" VerticalAlignment="Top" Width="75" Click="AddAnswerButton_Click"/>
+        <ListBox x:Name="answersList" DisplayMemberPath="AnswerText" Margin="41,406,29,38"/>
+        <Button x:Name="AnswersButton" Content="Show" HorizontalAlignment="Center" Margin="0,526,0,0" VerticalAlignment="Top" Width="74" Click="AnswersButton_Click"/>
+        <Button x:Name="UpdateAnswerButton" Content="Update" HorizontalAlignment="Left" Margin="372,194,0,0" VerticalAlignment="Top" Width="75" Click="UpdateAnswerButton_Click"/>
+        <Button x:Name="InformationWindowButton" Content="Information" HorizontalAlignment="Left" Margin="746,70,0,0" VerticalAlignment="Top" Width="75" Click="InformationWindowButton_Click"/>
+        <Button x:Name="RegistrationWindowButton" Content="Registration" HorizontalAlignment="Left" Margin="746,96,0,0" VerticalAlignment="Top" Width="75" Click="RegistrationWindowButton_Click"/>
+        <Label Content="Question" HorizontalAlignment="Left" Margin="149,46,0,0" VerticalAlignment="Top"/>
+        <Label Content="Text" HorizontalAlignment="Left" Margin="41,72,0,0" VerticalAlignment="Top" Width="72"/>
+        <Label Content="Subject" HorizontalAlignment="Left" Margin="41,98,0,0" VerticalAlignment="Top" Width="72"/>
+        <Label Content="Level" HorizontalAlignment="Left" Margin="41,118,0,0" VerticalAlignment="Top" Width="72"/>
+        <Label Content="Answer" HorizontalAlignment="Left" Margin="41,142,0,0" VerticalAlignment="Top" Width="72"/>
+        <Label Content="Answers" HorizontalAlignment="Left" Margin="381,44,0,0" VerticalAlignment="Top"/>
+        <Label Content="1." HorizontalAlignment="Left" Margin="316,72,0,0" VerticalAlignment="Top" Width="21"/>
+        <Label Content="2." HorizontalAlignment="Left" Margin="316,96,0,0" VerticalAlignment="Top" Width="21"/>
+        <Label Content="3." HorizontalAlignment="Left" Margin="316,118,0,0" VerticalAlignment="Top" Width="21"/>
+        <Label Content="4." HorizontalAlignment="Left" Margin="316,142,0,0" VerticalAlignment="Top" Width="21"/>
+        <Label Name="AdminLabel" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
