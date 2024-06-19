@@ -29,17 +29,6 @@ namespace QuizProgram
             dataBase = new DataBase();
             questionsUser = user;
             userLabel.Content = user.Name + " " + user.Surname;
-
-            List<string> topics = dataBase.Read_TopicFromDataBase();
-            comboBox.ItemsSource = topics;
-
-            //List<string> topics = dataBase.Read_TopicFromDataBase();
-            //comboBox.Items.Clear();
-            //foreach (string item in topics)
-            //{
-            //    comboBox.Items.Add(item);
-            //}
-            //topic = comboBox.SelectedItem as string;
         }
 
         private void Start_Quiz_Button_Click(object sender, RoutedEventArgs e)
@@ -103,15 +92,14 @@ namespace QuizProgram
             }
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //List<string> topics = dataBase.Read_TopicFromDataBase();
-            //ComboBox.Items.Clear();
-            //foreach (string item in topics)
-            //{
-            //    ComboBox.Items.Add(item);
-            //}
-            
+            List<string> topics = dataBase.Read_TopicFromDataBase();
+            comboBox.Items.Clear();
+            foreach (string item in topics)
+            {
+                comboBox.Items.Add(item);
+            }
             topic = comboBox.SelectedItem as string;
             Start_Quiz_Button.IsEnabled = true;
             Start_Quiz_Button.Content = "Start Quiz";

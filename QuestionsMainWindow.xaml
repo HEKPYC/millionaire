@@ -9,6 +9,6 @@
     <Grid>
         <Label Name="userLabel" Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Button Content="Start Quiz" Name="Start_Quiz_Button" HorizontalAlignment="Left" Height="90" Margin="305,263,0,0" VerticalAlignment="Top" Width="142" Click="Start_Quiz_Button_Click"/>
-        <ComboBox Name="comboBox" HorizontalAlignment="Left" Height="59" Margin="271,158,0,0" VerticalAlignment="Top" Width="213" SelectionChanged="ComboBox_SelectionChanged"/>
+        <ComboBox Name="comboBox" HorizontalAlignment="Left" Height="59" Margin="271,158,0,0" VerticalAlignment="Top" Width="213" SelectionChanged="comboBox_SelectionChanged"/>
     </Grid>
 </Window>

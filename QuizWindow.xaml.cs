@@ -148,7 +148,6 @@ namespace QuizProgram
             {
                 question_index++;
                 Question.Text = Quiz[question_index].TextQuestion;
-                //List<Answers> 
                 answers = dataBase.Read_AnswersFromDataBase(Quiz[question_index].Id);
                 Answer1_Button.Content = answers[0].AnswerText;
                 Answer2_Button.Content = answers[1].AnswerText;

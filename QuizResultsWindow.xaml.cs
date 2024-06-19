@@ -84,28 +84,5 @@ namespace QuizProgram
             _textBuilder.AppendLine(text);
             Results.Text = _textBuilder.ToString();
         }
-
-        private void Results_TextBox(object sender, TextChangedEventArgs e)
-        {
-            AddToText("Вікторина була пройдена за темою: " + Topic + "\n");
-            AddToText("Всього правильних відповідей: " + Right_answers + "/" + Quiz.Count + "\n");
-            AddToText("Набрано балів: " + Mark + "\n");
-            int question_index = 0;
-            foreach (var question in Quiz)
-            {
-                AddToText(question.TextQuestion + "(Це " + question.DifficultyLevel + " питання)" + "\n");
-                List<Answers> answers = dataBase.Read_AnswersFromDataBase(question.Id);
-                AddToText("Варіанти відповідей:\n");
-                int index = 1;
-                foreach (var answer in answers)
-                {
-                    AddToText(index + ") " + answer.AnswerText + "\n");
-                    index++;
-                }
-                AddToText("Правильна відповідь: " + answers[Quiz[question_index].RightAnswer-1].AnswerText + "\n");
-                AddToText("Ваша відповідь: " + answers[Users_answers[question_index] - 1].AnswerText + "\n");
-                question_index++;
-            }
-        }
     }
 }
