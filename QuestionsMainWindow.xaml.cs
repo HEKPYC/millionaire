@@ -26,8 +26,20 @@ namespace QuizProgram
         public QuestionsMainWindow(User user)
         {
             InitializeComponent();
+            dataBase = new DataBase();
             questionsUser = user;
             userLabel.Content = user.Name + " " + user.Surname;
+
+            List<string> topics = dataBase.Read_TopicFromDataBase();
+            comboBox.ItemsSource = topics;
+
+            //List<string> topics = dataBase.Read_TopicFromDataBase();
+            //comboBox.Items.Clear();
+            //foreach (string item in topics)
+            //{
+            //    comboBox.Items.Add(item);
+            //}
+            //topic = comboBox.SelectedItem as string;
         }
 
         private void Start_Quiz_Button_Click(object sender, RoutedEventArgs e)
@@ -51,21 +63,21 @@ namespace QuizProgram
                         break;
                 }
             }
-            if(hard>=3 && medium>=5 && easy>=7 && Quiz.Count >= 15)
+            if(hard>=1 && medium>=1 && easy>=1 && Quiz.Count >= 3)
             {
                 Random rand = new Random();
-                while (Quiz.Count > 15)
+                while (Quiz.Count > 3)
                 {
                     int randomIndex = rand.Next(Quiz.Count);
-                    if (Quiz[randomIndex].DifficultyLevel == "Складний" && hard == 3)
+                    if (Quiz[randomIndex].DifficultyLevel == "Складний" && hard == 1)
                     {
                         continue;
                     }
-                    else if (Quiz[randomIndex].DifficultyLevel == "Середній" && medium == 5)
+                    else if (Quiz[randomIndex].DifficultyLevel == "Середній" && medium == 1)
                     {
                         continue;
                     }
-                    else if (Quiz[randomIndex].DifficultyLevel == "Легкий" && easy == 7)
+                    else if (Quiz[randomIndex].DifficultyLevel == "Легкий" && easy == 1)
                     {
                         continue;
                     }
@@ -93,15 +105,16 @@ namespace QuizProgram
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            List<string> topics = dataBase.Read_TopicFromDataBase();
-            ComboBox.Items.Clear();
-            foreach (string item in topics)
-            {
-                ComboBox.Items.Add(item);
-            }
-            topic = ComboBox.SelectedItem as string;
+            //List<string> topics = dataBase.Read_TopicFromDataBase();
+            //ComboBox.Items.Clear();
+            //foreach (string item in topics)
+            //{
+            //    ComboBox.Items.Add(item);
+            //}
+            
+            topic = comboBox.SelectedItem as string;
             Start_Quiz_Button.IsEnabled = true;
+            Start_Quiz_Button.Content = "Start Quiz";
         }
-
     }
 }
