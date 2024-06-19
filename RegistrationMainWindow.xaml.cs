@@ -29,11 +29,11 @@ namespace QuizProgram
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            dataBase.Add_UserToDataBase(SurnameText.Text, NameText.Text, LoginText.Text, PasswordText.Text, StatusText.Text);
+            dataBase.Add_UserToDataBase(SurnameText.Text, NameText.Text, LoginText.Text, PasswordText.Text, (string)statusComboBox.SelectedValue);
 
             User user = new User();
 
-            List<User> users = dataBase.Read_UserFromDataBase(StatusText.Text);
+            List<User> users = dataBase.Read_UserFromDataBase((string)statusComboBox.SelectedValue);
             for (int i = 0; i < users.Count; i++)
             {
                 if (users[i].Login == LoginText.Text && users[i].Password == PasswordText.Text)
@@ -42,7 +42,7 @@ namespace QuizProgram
                 }
             }
 
-            if (StatusText.Text == "admin")
+            if ((string)statusComboBox.SelectedValue == "admin")
             {
                 MainWindow mainWindow = new MainWindow(user);
                 mainWindow.Show();

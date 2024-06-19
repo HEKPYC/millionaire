@@ -82,7 +82,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddChangeQuestionWindow.xaml.cs">
+      <DependentUpon>AddChangeQuestionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Answers.cs" />
+    <Compile Include="ChangeQuestionsWindow.xaml.cs">
+      <DependentUpon>ChangeQuestionsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataBase.cs" />
     <Compile Include="EntranceWindow.xaml.cs">
       <DependentUpon>EntranceWindow.xaml</DependentUpon>
@@ -103,6 +109,14 @@
     </Compile>
     <Compile Include="ResultScore.cs" />
     <Compile Include="User.cs" />
+    <Page Include="AddChangeQuestionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeQuestionsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EntranceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

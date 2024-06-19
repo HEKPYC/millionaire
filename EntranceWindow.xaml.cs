@@ -29,16 +29,18 @@ namespace QuizProgram
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            List<User> users = dataBase.Read_UserFromDataBase(StatusText.Text);
+            List<User> users = dataBase.Read_UserFromDataBase((string)statusComboBox.SelectedValue);
 
             for(int i = 0; i < users.Count; i++)
             {
                 if (users[i].Login == LoginText.Text && users[i].Password == PasswordText.Text)
                 {
-                    if (StatusText.Text == "admin")
+                    if ((string)statusComboBox.SelectedValue == "admin")
                     {
-                        MainWindow mainWindow = new MainWindow(users[i]);
-                        mainWindow.Show();
+                        //MainWindow mainWindow = new MainWindow(users[i]);
+                        //mainWindow.Show();
+                        ChangeQuestionsWindow changeQWindow = new ChangeQuestionsWindow();
+                        changeQWindow.Show();
                         return;
                     }
                     else
