@@ -98,9 +98,9 @@
       <DependentUpon>InformationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Questions.cs" />
-    <Compile Include="QuestionsMainWindow.xaml.cs">
-      <DependentUpon>QuestionsMainWindow.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="QuestionsMainWindow.xaml.cs" />
+    <Compile Include="QuizResultsWindow.xaml.cs" />
+    <Compile Include="QuizWindow.xaml.cs" />
     <Compile Include="RegistrationMainWindow.xaml.cs">
       <DependentUpon>RegistrationMainWindow.xaml</DependentUpon>
     </Compile>
@@ -139,8 +139,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="QuestionsMainWindow.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="QuizResultsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="QuizWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="RegistrationMainWindow.xaml">
       <SubType>Designer</SubType>
