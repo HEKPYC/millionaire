@@ -7,7 +7,7 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="QuizProgram.AddChangeQuestionWindow"
         mc:Ignorable="d"
         Title="AddChangeQuestionWindow" Height="444" Width="316"
-     Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+     Closing="Window_Closing"  >
     <Grid Margin="0,0,0,-6">
         <TextBox x:Name="questionText" HorizontalAlignment="Left" Margin="118,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="topicNameText" HorizontalAlignment="Left" Margin="118,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>

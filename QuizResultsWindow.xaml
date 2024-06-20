@@ -10,5 +10,6 @@
         <TextBox x:Name="Results" IsReadOnly="True" Focusable="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True" HorizontalAlignment="Left" Height="150" Margin="227,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="328"/>
         <TextBox x:Name="Ranking" IsReadOnly="True" Focusable="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True" HorizontalAlignment="Left" Height="93" Margin="615,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="139"/>
         <Label x:Name="Rank" Content="Top 10 players" HorizontalAlignment="Left" Height="40" Margin="615,10,0,0" VerticalAlignment="Top" Width="93"/>
+        <Button x:Name="Restart_Quiz" Content="Start a new quiz" HorizontalAlignment="Left" Height="41" Margin="33,30,0,0" VerticalAlignment="Top" Width="98" Click="Restart_Quiz_Click"/>
     </Grid>
 </Window>

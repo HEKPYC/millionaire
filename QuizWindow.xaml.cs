@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace QuizProgram
 {
@@ -28,6 +29,9 @@ namespace QuizProgram
         List<int> users_answers;
         int mark = 0;
         int right_answers = 0;
+        DispatcherTimer _timer;
+        DateTime _startTime;
+        TimeSpan _totalTime;
         public QuizWindow(string topic, List<Questions> quiz, User user)
         {
             InitializeComponent();
@@ -36,6 +40,12 @@ namespace QuizProgram
             Topic = topic;
             Quiz = quiz;
             questionsUser = user;
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(1);
+            _timer.Tick += Timer_Tick;
+            _totalTime = TimeSpan.Zero;
+            _startTime = DateTime.Now;
+            _timer.Start();
             Question.Text = Quiz[question_index].TextQuestion;
             answers = dataBase.Read_AnswersFromDataBase(Quiz[question_index].Id);
             Answer1_Button.Content = answers[0].AnswerText;
@@ -44,7 +54,12 @@ namespace QuizProgram
             Answer4_Button.Content = answers[3].AnswerText;
             Confirm_Button.IsEnabled = false;
         }
-        
+        void Timer_Tick(object sender, EventArgs e)
+        {
+            var elapsed = DateTime.Now - _startTime;
+            TimerTextBlock.Text = elapsed.ToString(@"hh\:mm\:ss");
+            _totalTime = elapsed;
+        }
         private void Confirm_Button_Click(object sender, RoutedEventArgs e)
         {
             if (Answer1_Button.IsEnabled == false)
@@ -140,7 +155,8 @@ namespace QuizProgram
             }
             if (question_index==2)
             {
-            QuizResultsWindow resultsWindow = new QuizResultsWindow(Topic, Quiz, questionsUser, mark, right_answers, users_answers);
+            var averageTimePerQuestion = new TimeSpan(_totalTime.Ticks / Quiz.Count);
+            QuizResultsWindow resultsWindow = new QuizResultsWindow(Topic, Quiz, questionsUser, mark, right_answers, users_answers, TimerTextBlock.Text, averageTimePerQuestion.ToString());
             resultsWindow.ShowDialog();
             Close();
             }
