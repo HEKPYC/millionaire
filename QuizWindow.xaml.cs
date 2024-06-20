@@ -156,9 +156,10 @@ namespace QuizProgram
             if (question_index==2)
             {
             var averageTimePerQuestion = new TimeSpan(_totalTime.Ticks / Quiz.Count);
+            
             QuizResultsWindow resultsWindow = new QuizResultsWindow(Topic, Quiz, questionsUser, mark, right_answers, users_answers, TimerTextBlock.Text, averageTimePerQuestion.ToString());
-            resultsWindow.ShowDialog();
-            Close();
+            resultsWindow.Show();
+            this.Close();
             }
             else
             {

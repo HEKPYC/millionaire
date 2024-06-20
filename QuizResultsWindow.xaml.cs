@@ -29,8 +29,9 @@ namespace QuizProgram
         int Right_answers;
         StringBuilder _textBuilder;
         StringBuilder _rankBuilder;
-        String Time_Spent;
-        String Avarage_Time;
+        string Time_Spent;
+        string Avarage_Time;
+        ResultScore Score;
         public QuizResultsWindow(string topic, List<Questions> quiz, User user, int mark, int right_answers, List<int> users_answers, string timerValue, string avarageTime)
         {
             InitializeComponent();
@@ -46,26 +47,32 @@ namespace QuizProgram
             Time_Spent = timerValue;
             Avarage_Time = avarageTime;
             List<ResultScore> results = dataBase.Read_ResultScoreFromDataBase();
-            for (int i = 0; i < results.Count; i++)
+
+            bool check = false;
+
+            foreach (ResultScore score in results)
             {
-                if (user.Login == results[i].Username && results[i].Score < mark)
+                if (questionsUser.Login.Equals(score.Username))
                 {
-                    dataBase.Update_ResultScoreInDataBase(results[i], new ResultScore { Username = user.Login, Score = mark });
-                    break;
-                }
-                else if (i == results.Count - 1)
-                {
-                    dataBase.Add_ResultScoreToDataBase(user.Login, mark);
+                    Score = score;
+                    check = true;
                 }
             }
+
+            if(check == false)
+            {
+                dataBase.Add_ResultScoreToDataBase(questionsUser.Login, mark);
+            }
+
+            dataBase.Update_ResultScoreInDataBase(Score, new ResultScore { Username = questionsUser.Login, Score = mark });
 
             void AddToRank(string text)
             {
                 _rankBuilder.AppendLine(text);
-                Ranking.Text = _textBuilder.ToString();
+                Ranking.Text = _rankBuilder.ToString();
             }
             List<ResultScore> users_results = dataBase.Read_ResultScoreFromDataBase();
-            List<User> users = dataBase.Read_UserFromDataBase(questionsUser.Status);
+
             users_results = users_results.OrderByDescending(x => x.Score).ToList();
             for (int i = 0; i < users_results.Count; i++)
             {
@@ -73,13 +80,8 @@ namespace QuizProgram
                 {
                     break;
                 }
-                for(int j = 0; j < users.Count; j++)
-                {
-                    if (users[j].Login == users_results[i].Username)
-                    {
-                        AddToRank(users[j].Name + " " + users[j].Surname + users[j].Login + users_results[i].Score + "\n");
-                    }
-                }
+
+                AddToRank(users_results[i].Username + " " + users_results[i].Score + "\n");
             }
 
 
@@ -115,8 +117,8 @@ namespace QuizProgram
         private void Restart_Quiz_Click(object sender, RoutedEventArgs e)
         {
             QuestionsMainWindow questionsWindow = new QuestionsMainWindow(questionsUser);
-            questionsWindow.ShowDialog();
-            Close();
+            questionsWindow.Show();
+            this.Close();
         }
     }
 }
