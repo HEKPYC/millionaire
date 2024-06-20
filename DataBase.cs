@@ -127,7 +127,7 @@ namespace QuizProgram
 
                     context.Answers.Add(answer);
                     context.SaveChanges();
-                    MessageBox.Show("Answer was added");
+                    //MessageBox.Show("Answer was added");
                 }
                 catch (Exception e) 
                 { 
@@ -160,7 +160,7 @@ namespace QuizProgram
                     {
                         context.Answers.RemoveRange(ansversDelete);
                         context.SaveChanges();
-                        MessageBox.Show("Answers was deleted");
+                        //MessageBox.Show("Answers was deleted");
                     }
                     else
                     {
@@ -191,7 +191,7 @@ namespace QuizProgram
                     }
 
                     context.SaveChanges();
-                    MessageBox.Show("Answer was updated");
+                    //MessageBox.Show("Answer was updated");
                 }
                 catch(Exception e)
                 {
@@ -214,7 +214,7 @@ namespace QuizProgram
 
                     context.Information.Add(information);
                     context.SaveChanges();
-                    MessageBox.Show("Information was added");
+                    //MessageBox.Show("Information was added");
                 }
             }
             catch (Exception e) 
@@ -247,7 +247,7 @@ namespace QuizProgram
                     {
                         context.Information.Remove(informationDelete);
                         context.SaveChanges();
-                        MessageBox.Show("Information was delete");
+                        //MessageBox.Show("Information was delete");
                     }
                     else
                     {
@@ -273,7 +273,7 @@ namespace QuizProgram
                     {
                         context.Information.RemoveRange(information);
                         context.SaveChanges();
-                        MessageBox.Show("Information was delete");
+                        //MessageBox.Show("Information was delete");
                     }
                     else
                     {
@@ -304,7 +304,7 @@ namespace QuizProgram
                     }
 
                     context.SaveChanges();
-                    MessageBox.Show("Information was update");
+                    //MessageBox.Show("Information was update");
                 }
                 catch (Exception e)
                 {
@@ -405,6 +405,7 @@ namespace QuizProgram
             }
         }
 
+        //string username
         public void Add_ResultScoreToDataBase(string username, int score)
         {
             using(var context = new DataBaseContext())
@@ -419,7 +420,7 @@ namespace QuizProgram
 
                     context.Results.Add(resultScore);
                     context.SaveChanges();
-                    MessageBox.Show("Result score was added");
+                    //MessageBox.Show("Result score was added");
                 }
                 catch(Exception e)
                 {
@@ -457,7 +458,7 @@ namespace QuizProgram
                     }
 
                     context.SaveChanges();
-                    MessageBox.Show("Result score was updated");
+                    //MessageBox.Show("Result score was updated");
                 }
                 catch(Exception e)
                 {

@@ -41,6 +41,19 @@ namespace QuizProgram
             _textBuilder = new StringBuilder();
             _rankBuilder = new StringBuilder();
 
+            List<ResultScore> results = dataBase.Read_ResultScoreFromDataBase();
+            for (int i = 0; i < results.Count; i++)
+            {
+                if (user.Login == results[i].Username)
+                {
+                    dataBase.Update_ResultScoreInDataBase(results[i], new ResultScore { Username = user.Login, Score = mark });
+                }
+                else if (i == results.Count - 1)
+                {
+                    dataBase.Add_ResultScoreToDataBase(user.Login, mark);
+                }
+            }
+
             void AddToRank(string text)
             {
                 _rankBuilder.AppendLine(text);

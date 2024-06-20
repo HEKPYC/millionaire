@@ -141,7 +141,7 @@ namespace QuizProgram
             if (question_index==2)
             {
             QuizResultsWindow resultsWindow = new QuizResultsWindow(Topic, Quiz, questionsUser, mark, right_answers, users_answers);
-            resultsWindow.Show();
+            resultsWindow.ShowDialog();
             Close();
             }
             else

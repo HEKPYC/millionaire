@@ -28,7 +28,18 @@ namespace QuizProgram
             InitializeComponent();
             dataBase = new DataBase();
             questionsUser = user;
-            userLabel.Content = user.Name + " " + user.Surname;
+            //userLabel.Content = user.Name + " " + user.Surname;
+
+            List<string> topics = dataBase.Read_TopicFromDataBase();
+            comboBox.ItemsSource = topics;
+
+            //List<string> topics = dataBase.Read_TopicFromDataBase();
+            //comboBox.Items.Clear();
+            //foreach (string item in topics)
+            //{
+            //    comboBox.Items.Add(item);
+            //}
+            //topic = comboBox.SelectedItem as string;
         }
 
         private void Start_Quiz_Button_Click(object sender, RoutedEventArgs e)
@@ -82,7 +93,7 @@ namespace QuizProgram
                     }
                 }
                 QuizWindow quizWindow = new QuizWindow(topic, Quiz, questionsUser);
-                quizWindow.Show();
+                quizWindow.ShowDialog();
                 Close();
             }
             else
@@ -94,15 +105,27 @@ namespace QuizProgram
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //List<string> topics = dataBase.Read_TopicFromDataBase();
+            //comboBox.Items.Clear();
+            //foreach (string item in topics)
+            //{
+            //    comboBox.Items.Add(item);
+            //}
+            //topic = comboBox.SelectedItem as string;
+
             List<string> topics = dataBase.Read_TopicFromDataBase();
-            comboBox.Items.Clear();
-            foreach (string item in topics)
-            {
-                comboBox.Items.Add(item);
-            }
+            comboBox.ItemsSource = topics;
             topic = comboBox.SelectedItem as string;
+
             Start_Quiz_Button.IsEnabled = true;
             Start_Quiz_Button.Content = "Start Quiz";
+        }
+
+        private void settingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserSettingsWindow userSWindow = new UserSettingsWindow(questionsUser);
+            userSWindow.ShowDialog();
+            questionsUser = userSWindow.user;
         }
     }
 }

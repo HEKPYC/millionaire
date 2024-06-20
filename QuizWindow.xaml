@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizProgram"
         mc:Ignorable="d"
-        Title="QuizWindow" Height="450" Width="800">
+        Title="QuizWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Button x:Name="Answer1_Button" Content="Answer1" HorizontalAlignment="Left" Height="66" Margin="215,169,0,0" VerticalAlignment="Top" Width="119" Click="Answer1_Button_Click"/>
         <Button x:Name="Answer2_Button" Content="Answer2" HorizontalAlignment="Left" Height="66" Margin="420,169,0,0" VerticalAlignment="Top" Width="140" Click="Answer2_Button_Click"/>

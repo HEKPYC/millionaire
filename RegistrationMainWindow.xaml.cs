@@ -45,14 +45,14 @@ namespace QuizProgram
             if ((string)statusComboBox.SelectedValue == "admin")
             {
                 MainWindow mainWindow = new MainWindow(user);
-                mainWindow.Show();
+                mainWindow.ShowDialog();
                 Close();
             }
             else
             {
 
                 QuestionsMainWindow questionsWindow = new QuestionsMainWindow(user);
-                questionsWindow.Show();
+                questionsWindow.ShowDialog();
                 Close();
             }
         }

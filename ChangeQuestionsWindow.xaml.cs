@@ -21,7 +21,8 @@ namespace QuizProgram
     public partial class ChangeQuestionsWindow : Window
     {
         DataBase dataBase;
-        public ChangeQuestionsWindow()
+        User user;
+        public ChangeQuestionsWindow(User user)
         {
             InitializeComponent();
 
@@ -29,6 +30,9 @@ namespace QuizProgram
 
             List<string> topics = dataBase.Read_TopicFromDataBase();
             topicsComboBox.ItemsSource = topics;
+            this.user = user;
+
+
         }
 
 
@@ -39,14 +43,16 @@ namespace QuizProgram
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            if (topicsComboBox.SelectedIndex != -1)
-            {
-                AddChangeQuestionWindow changeWindow = new AddChangeQuestionWindow("add");
-                changeWindow.ShowDialog();
+            AddChangeQuestionWindow changeWindow = new AddChangeQuestionWindow("add");
+            changeWindow.ShowDialog();
 
 
-                questionsListBox.ItemsSource = dataBase.Read_QuestionsFromDataBase((string)topicsComboBox.SelectedValue);
-            }
+            questionsListBox.ItemsSource = dataBase.Read_QuestionsFromDataBase((string)topicsComboBox.SelectedValue);
+
+            List<string> topics = dataBase.Read_TopicFromDataBase();
+            topicsComboBox.ItemsSource = topics;
+
+
         }
 
         private void changeButton_Click(object sender, RoutedEventArgs e)
@@ -69,11 +75,21 @@ namespace QuizProgram
             {
                 dataBase.Delete_QuestionFromDataBase(((Questions)questionsListBox.SelectedItem).Id);
                 questionsListBox.ItemsSource = dataBase.Read_QuestionsFromDataBase((string)topicsComboBox.SelectedValue);
+
+                List<string> topics = dataBase.Read_TopicFromDataBase();
+                topicsComboBox.ItemsSource = topics;
             }
             else
             {
                 MessageBox.Show("Питання не було виділено");
             }
+        }
+
+        private void settingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserSettingsWindow userSWindow = new UserSettingsWindow(user);
+            userSWindow.ShowDialog();
+            user = userSWindow.user;
         }
     }
 }

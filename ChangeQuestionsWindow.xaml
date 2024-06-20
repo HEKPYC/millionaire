@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizProgram"
         mc:Ignorable="d"
-        Title="ChangeQuestionsWindow" Height="510" Width="773">
+        Title="ChangeQuestionsWindow" Height="510" Width="773" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,10,-47">
         <ComboBox x:Name="topicsComboBox" HorizontalAlignment="Left" Margin="354,32,0,0" VerticalAlignment="Top" Width="131" SelectionChanged="topicsComboBox_SelectionChanged"/>
         <Label Content="Оберіть предмет:" HorizontalAlignment="Left" Margin="223,30,0,0" VerticalAlignment="Top" Width="131"/>
@@ -14,6 +14,7 @@
         <Button x:Name="addButton" Content="Додати" HorizontalAlignment="Left" Margin="223,328,0,0" VerticalAlignment="Top" Height="28" Width="269" Click="addButton_Click"/>
         <Button x:Name="changeButton" Content="Змінити" HorizontalAlignment="Left" Margin="223,361,0,0" VerticalAlignment="Top" Height="28" Width="269" Click="changeButton_Click"/>
         <Button x:Name="deleteButton" Content="Видалити" HorizontalAlignment="Left" Margin="223,396,0,0" VerticalAlignment="Top" Height="28" Width="269" Click="deleteButton_Click"/>
+        <Button x:Name="settingsButton" Content="Settings" HorizontalAlignment="Left" Height="50" Margin="674,43,0,0" VerticalAlignment="Top" Width="63" Click="settingsButton_Click"/>
 
     </Grid>
 </Window>
