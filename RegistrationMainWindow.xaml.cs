@@ -31,29 +31,36 @@ namespace QuizProgram
         {
             dataBase.Add_UserToDataBase(SurnameText.Text, NameText.Text, LoginText.Text, PasswordText.Text, (string)statusComboBox.SelectedValue);
 
-            User user = new User();
+            User user = new User
+            {
+                Surname = SurnameText.Text,
+                Name = NameText.Text,
+                Login = LoginText.Text,
+                Password = PasswordText.Text,
+                Status = (string)statusComboBox.SelectedValue
+            };
 
-            List<User> users = dataBase.Read_UserFromDataBase((string)statusComboBox.SelectedValue);
+            /*List<User> users = dataBase.Read_UserFromDataBase((string)statusComboBox.SelectedValue);
             for (int i = 0; i < users.Count; i++)
             {
                 if (users[i].Login == LoginText.Text && users[i].Password == PasswordText.Text)
                 {
                     user = users[i];
                 }
-            }
+            }*/
 
             if ((string)statusComboBox.SelectedValue == "admin")
             {
-                MainWindow mainWindow = new MainWindow(user);
-                mainWindow.ShowDialog();
-                Close();
+                ChangeQuestionsWindow changeQuestionsWindow = new ChangeQuestionsWindow(user);
+                changeQuestionsWindow.Show();
+                this.Close();
             }
             else
             {
 
                 QuestionsMainWindow questionsWindow = new QuestionsMainWindow(user);
-                questionsWindow.ShowDialog();
-                Close();
+                questionsWindow.Show();
+                this.Close();
             }
         }
 
