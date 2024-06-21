@@ -107,7 +107,7 @@ namespace QuizProgram
                     Update_Answer(answers[2], answer3Text.Text);
                     Update_Answer(answers[3], answer4Text.Text);
 
-
+                    this.Close();
 
                     //Update_AnswerCheck(questions, answer1Text);
                     //Update_AnswerCheck(questions, answer2Text);

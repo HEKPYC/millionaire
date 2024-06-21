@@ -59,12 +59,14 @@ namespace QuizProgram
                 }
             }
 
-            if(check == false)
+            if (check == false)
             {
                 dataBase.Add_ResultScoreToDataBase(questionsUser.Login, mark);
             }
-
-            dataBase.Update_ResultScoreInDataBase(Score, new ResultScore { Username = questionsUser.Login, Score = mark });
+            else
+            {
+                dataBase.Update_ResultScoreInDataBase(Score, new ResultScore { Username = questionsUser.Login, Score = mark });
+            }
 
             void AddToRank(string text)
             {
