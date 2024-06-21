@@ -66,7 +66,9 @@ namespace QuizProgram
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            EntranceWindow en = new EntranceWindow();
+            en.Show();
+            this.Close();
         }
     }
 }

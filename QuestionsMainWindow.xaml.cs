@@ -127,5 +127,12 @@ namespace QuizProgram
             userSWindow.ShowDialog();
             questionsUser = userSWindow.user;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            EntranceWindow en = new EntranceWindow();
+            en.Show();
+            this.Close();
+        }
     }
 }

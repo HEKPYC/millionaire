@@ -10,5 +10,6 @@
         <Button Content="Start Quiz" Name="Start_Quiz_Button" HorizontalAlignment="Left" Height="90" Margin="305,263,0,0" VerticalAlignment="Top" Width="142" Click="Start_Quiz_Button_Click"/>
         <ComboBox Name="comboBox" HorizontalAlignment="Left" Height="59" Margin="271,158,0,0" VerticalAlignment="Top" Width="213" SelectionChanged="comboBox_SelectionChanged"/>
         <Button Name="settingsButton" Content="Settings" HorizontalAlignment="Left" Height="50" Margin="717,23,0,0" VerticalAlignment="Top" Width="55" Click="settingsButton_Click"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="24,168,0,0" VerticalAlignment="Top" Height="49" Width="61" Click="Button_Click"/>
     </Grid>
 </Window>

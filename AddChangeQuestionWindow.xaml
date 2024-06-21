@@ -11,7 +11,6 @@
     <Grid Margin="0,0,0,-6">
         <TextBox x:Name="questionText" HorizontalAlignment="Left" Margin="118,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="topicNameText" HorizontalAlignment="Left" Margin="118,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="difficultyLevelText" HorizontalAlignment="Left" Margin="118,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Question" HorizontalAlignment="Left" Margin="103,24,0,0" VerticalAlignment="Top"/>
         <Label Content="Text" HorizontalAlignment="Left" Margin="41,72,0,0" VerticalAlignment="Top" Width="72"/>
         <Label Content="Subject" HorizontalAlignment="Left" Margin="41,96,0,0" VerticalAlignment="Top" Width="72"/>
@@ -34,6 +33,11 @@
             <System:String>2</System:String>
             <System:String>3</System:String>
             <System:String>4</System:String>
+        </ComboBox>
+        <ComboBox x:Name="lvlComboBox" HorizontalAlignment="Left" Margin="118,120,0,0" VerticalAlignment="Top" Width="120">
+            <System:String>Легкий</System:String>
+            <System:String>Середній</System:String>
+            <System:String>Складний</System:String>
         </ComboBox>
     </Grid>
 </Window>

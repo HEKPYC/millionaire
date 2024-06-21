@@ -122,5 +122,12 @@ namespace QuizProgram
             questionsWindow.Show();
             this.Close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            EntranceWindow en = new EntranceWindow();
+            en.Show();
+            this.Close();
+        }
     }
 }

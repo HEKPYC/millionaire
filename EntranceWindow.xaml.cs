@@ -40,13 +40,15 @@ namespace QuizProgram
                         //MainWindow mainWindow = new MainWindow(users[i]);
                         //mainWindow.Show();
                         ChangeQuestionsWindow changeQWindow = new ChangeQuestionsWindow(users[i]);
-                        changeQWindow.ShowDialog();
+                        changeQWindow.Show();
+                        this.Close();
                         return;
                     }
                     else
                     {
                         QuestionsMainWindow questionsWindow = new QuestionsMainWindow(users[i]);
-                        questionsWindow.ShowDialog();
+                        questionsWindow.Show();
+                        this.Close();
                         return;
                     }
                 }
@@ -66,7 +68,8 @@ namespace QuizProgram
         private void RegistrationButton_Click(object sender, RoutedEventArgs e)
         {
             RegistrationMainWindow registrationWindow = new RegistrationMainWindow();
-            registrationWindow.ShowDialog();
+            registrationWindow.Show();
+            this.Close();
         }
     }
 }

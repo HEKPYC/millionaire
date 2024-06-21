@@ -31,8 +31,6 @@ namespace QuizProgram
             List<string> topics = dataBase.Read_TopicFromDataBase();
             topicsComboBox.ItemsSource = topics;
             this.user = user;
-
-
         }
 
 
@@ -90,6 +88,13 @@ namespace QuizProgram
             UserSettingsWindow userSWindow = new UserSettingsWindow(user);
             userSWindow.ShowDialog();
             user = userSWindow.user;
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            EntranceWindow en = new EntranceWindow();
+            en.Show();
+            this.Close();
         }
     }
 }

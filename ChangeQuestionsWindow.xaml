@@ -15,6 +15,7 @@
         <Button x:Name="changeButton" Content="Змінити" HorizontalAlignment="Left" Margin="223,361,0,0" VerticalAlignment="Top" Height="28" Width="269" Click="changeButton_Click"/>
         <Button x:Name="deleteButton" Content="Видалити" HorizontalAlignment="Left" Margin="223,396,0,0" VerticalAlignment="Top" Height="28" Width="269" Click="deleteButton_Click"/>
         <Button x:Name="settingsButton" Content="Settings" HorizontalAlignment="Left" Height="50" Margin="674,43,0,0" VerticalAlignment="Top" Width="63" Click="settingsButton_Click"/>
+        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Height="50" Width="60" Click="backButton_Click"/>
 
     </Grid>
 </Window>

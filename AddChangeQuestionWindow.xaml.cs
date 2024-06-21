@@ -35,7 +35,17 @@ namespace QuizProgram
             {
                 questionText.Text = questions.TextQuestion;
                 topicNameText.Text = questions.TopicName;
-                difficultyLevelText.Text = questions.DifficultyLevel;
+                
+                for (int i = 0; i < lvlComboBox.Items.Count; i++)
+                {
+                    if((string)lvlComboBox.Items[i] == questions.DifficultyLevel)
+                    {
+                        lvlComboBox.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                //difficultyLevelText.Text = questions.DifficultyLevel;
                 answerComboBox.SelectedIndex = questions.RightAnswer - 1;
 
                 List<Answers> answers = dataBase.Read_AnswersFromDataBase(questions.Id);
@@ -55,7 +65,7 @@ namespace QuizProgram
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-            if (questionText.Text.Length == 0 || topicNameText.Text.Length == 0 || difficultyLevelText.Text.Length == 0 || answerComboBox.SelectedIndex == -1 || answer1Text.Text.Length == 0 || answer2Text.Text.Length == 0 || answer3Text.Text.Length == 0 || answer4Text.Text.Length == 0)
+            if (questionText.Text.Length == 0 || topicNameText.Text.Length == 0 || lvlComboBox.SelectedIndex == -1 || answerComboBox.SelectedIndex == -1 || answer1Text.Text.Length == 0 || answer2Text.Text.Length == 0 || answer3Text.Text.Length == 0 || answer4Text.Text.Length == 0)
             {
                 MessageBox.Show("Не всі поля заповнені");
             }
@@ -63,12 +73,12 @@ namespace QuizProgram
             {
                 if (action == "add")
                 {
-                    dataBase.Add_QuestionToDataBase(questionText.Text, topicNameText.Text, difficultyLevelText.Text, int.Parse((string)answerComboBox.SelectedValue));
+                    dataBase.Add_QuestionToDataBase(questionText.Text, topicNameText.Text, (string)lvlComboBox.SelectedValue, int.Parse((string)answerComboBox.SelectedValue));
 
                     List<Questions> tempQuestions = dataBase.Read_QuestionsFromDataBase(topicNameText.Text);
                     for (int i = 0; i < tempQuestions.Count; i++)
                     {
-                        if (tempQuestions[i].TextQuestion == questionText.Text && tempQuestions[i].TopicName == topicNameText.Text && tempQuestions[i].DifficultyLevel == difficultyLevelText.Text && tempQuestions[i].RightAnswer == int.Parse((string)answerComboBox.SelectedValue))
+                        if (tempQuestions[i].TextQuestion == questionText.Text && tempQuestions[i].TopicName == topicNameText.Text && tempQuestions[i].DifficultyLevel == (string)lvlComboBox.SelectedValue && tempQuestions[i].RightAnswer == int.Parse((string)answerComboBox.SelectedValue))
                         {
                             dataBase.Add_AnswerToDataBase(tempQuestions[i].Id, 1, answer1Text.Text);
                             dataBase.Add_AnswerToDataBase(tempQuestions[i].Id, 2, answer2Text.Text);
@@ -79,7 +89,8 @@ namespace QuizProgram
                     }
                     questionText.Text = "";
                     topicNameText.Text = "";
-                    difficultyLevelText.Text = "";
+
+                    lvlComboBox.SelectedIndex = -1;
                     answerComboBox.SelectedIndex = -1;
                     
                     answer1Text.Text = "";
@@ -94,7 +105,7 @@ namespace QuizProgram
                         Id = questions.Id,
                         TextQuestion = questionText.Text,
                         TopicName = topicNameText.Text,
-                        DifficultyLevel = difficultyLevelText.Text,
+                        DifficultyLevel = (string)lvlComboBox.SelectedValue,//difficultyLevelText.Text,
                         RightAnswer = int.Parse((string)answerComboBox.SelectedValue)
                     };
 
