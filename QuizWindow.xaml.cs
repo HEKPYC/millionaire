@@ -154,7 +154,7 @@ namespace QuizProgram
                 
                 users_answers.Add(answers[3].NumberAnswer);
             }
-            if (question_index==2)
+            if (question_index==14)
             {
             var averageTimePerQuestion = new TimeSpan(_totalTime.Ticks / Quiz.Count);
             

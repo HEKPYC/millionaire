@@ -64,10 +64,10 @@ namespace QuizProgram
                         break;
                 }
             }
-            if(hard>=1 && medium>=1 && easy>=1 && Quiz.Count >= 3)
+            if(hard>=3 && medium>=5 && easy>=7 && Quiz.Count >= 15)
             {
                 Random rand = new Random();
-                while (Quiz.Count > 3)
+                while (Quiz.Count > 15)
                 {
                     int randomIndex = rand.Next(Quiz.Count);
                     if (Quiz[randomIndex].DifficultyLevel == "Складний" && hard == 1)
