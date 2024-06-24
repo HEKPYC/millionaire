@@ -325,24 +325,33 @@ namespace QuizProgram
             return topics;
         }
 
-        public void Add_UserToDataBase(string surname, string name, string login, string password, string status)
+        public void Add_UserToDataBase(string surname, string name, string login, string password, string status, bool loginExists)
         {
             try
             {
                 using (var context = new DataBaseContext())
                 {
-                    var user = new User
-                    {
-                        Surname = surname,
-                        Name = name,
-                        Login = login,
-                        Password = password,
-                        Status = status
-                    };
+                    loginExists = context.User.Any(u => u.Login == login);
 
-                    context.User.Add(user);
-                    context.SaveChanges();
-                    MessageBox.Show("User was added");
+                    if (loginExists)
+                    {
+                        MessageBox.Show("Login is exists in data base");
+                    }
+                    else
+                    {
+                        var user = new User
+                        {
+                            Surname = surname,
+                            Name = name,
+                            Login = login,
+                            Password = password,
+                            Status = status
+                        };
+
+                        context.User.Add(user);
+                        context.SaveChanges();
+                        MessageBox.Show("User was added");
+                    }
                 }
             }
             catch (Exception e) 

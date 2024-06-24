@@ -21,27 +21,57 @@ namespace QuizProgram
     public partial class RegistrationMainWindow : Window
     {
         DataBase dataBase;
+        char[] invalidChars;
         public RegistrationMainWindow()
         {
             this.ResizeMode = ResizeMode.NoResize;
             InitializeComponent();
             dataBase = new DataBase();
+            invalidChars = new char[] { '/', '|', '\\', '*', '%', '?', '!', '&', '@', '"', '\'', '(', ')', '[', ']', '=', '+', '~', '#', '$', '^', '<', '>', '{', '}', ':', '№' };
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (SurnameText.Text.Length > 1 && NameText.Text.Length > 2 && LoginText.Text.Length > 4 && PasswordText.Text.Length > 7)
             {
-                dataBase.Add_UserToDataBase(SurnameText.Text, NameText.Text, LoginText.Text, PasswordText.Text, (string)statusComboBox.SelectedValue);
+                if (!LoginText.Text.Any(c => invalidChars.Contains(c)))
+                {
+                    bool loginExists = false;
+
+                    dataBase.Add_UserToDataBase(SurnameText.Text, NameText.Text, LoginText.Text, PasswordText.Text, (string)statusComboBox.SelectedValue, loginExists);
+
+                    if (loginExists)
+                    {
+                        User user = new User
+                        {
+                            Surname = SurnameText.Text,
+                            Name = NameText.Text,
+                            Login = LoginText.Text,
+                            Password = PasswordText.Text,
+                            Status = (string)statusComboBox.SelectedValue
+                        };
+
+                        if ((string)statusComboBox.SelectedValue == "admin")
+                        {
+                            ChangeQuestionsWindow changeQuestionsWindow = new ChangeQuestionsWindow(user);
+                            changeQuestionsWindow.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+
+                            QuestionsMainWindow questionsWindow = new QuestionsMainWindow(user);
+                            questionsWindow.Show();
+                            this.Close();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect character in login");
+                }
            
-            User user = new User
-            {
-                Surname = SurnameText.Text,
-                Name = NameText.Text,
-                Login = LoginText.Text,
-                Password = PasswordText.Text,
-                Status = (string)statusComboBox.SelectedValue
-            };
+                
             /*List<User> users = dataBase.Read_UserFromDataBase((string)statusComboBox.SelectedValue);
             for (int i = 0; i < users.Count; i++)
             {
@@ -50,20 +80,6 @@ namespace QuizProgram
                     user = users[i];
                 }
             }*/
-           
-                if ((string)statusComboBox.SelectedValue == "admin")
-                {
-                    ChangeQuestionsWindow changeQuestionsWindow = new ChangeQuestionsWindow(user);
-                    changeQuestionsWindow.Show();
-                    this.Close();
-                }
-                else
-                {
-
-                    QuestionsMainWindow questionsWindow = new QuestionsMainWindow(user);
-                    questionsWindow.Show();
-                    this.Close();
-                }
             }
             else
             {

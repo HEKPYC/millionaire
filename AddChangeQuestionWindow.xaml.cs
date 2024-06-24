@@ -23,22 +23,24 @@ namespace QuizProgram
         string action;
         Questions questions;
         DataBase dataBase;
-        public AddChangeQuestionWindow(string _action, Questions _questions = null)
+        User currentUser;
+        public AddChangeQuestionWindow(User user, string _action, Questions _questions = null)
         {
             InitializeComponent();
             this.ResizeMode = ResizeMode.NoResize;
             action = _action;
             questions = _questions;
             dataBase = new DataBase();
+            currentUser = user;
 
             if (action == "change")
             {
                 questionText.Text = questions.TextQuestion;
                 topicNameText.Text = questions.TopicName;
-                
+
                 for (int i = 0; i < lvlComboBox.Items.Count; i++)
                 {
-                    if((string)lvlComboBox.Items[i] == questions.DifficultyLevel)
+                    if ((string)lvlComboBox.Items[i] == questions.DifficultyLevel)
                     {
                         lvlComboBox.SelectedIndex = i;
                         break;
@@ -54,19 +56,22 @@ namespace QuizProgram
                 answer2Text.Text = answers[1].AnswerText;
                 answer3Text.Text = answers[2].AnswerText;
                 answer4Text.Text = answers[3].AnswerText;
-
             }
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            ChangeQuestionsWindow changeQuestionsWindow = new ChangeQuestionsWindow(currentUser);
+            changeQuestionsWindow.Show();
+            this.Close();
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
             bool CheckForRepeatQuestionName = false;
+
             List<Questions> quest = dataBase.Read_QuestionsFromDataBase(topicNameText.Text);
+
             if (questionText.Text.Length == 0 || topicNameText.Text.Length == 0 || lvlComboBox.SelectedIndex == -1 || answerComboBox.SelectedIndex == -1 || answer1Text.Text.Length == 0 || answer2Text.Text.Length == 0 || answer3Text.Text.Length == 0 || answer4Text.Text.Length == 0)
             {
                 MessageBox.Show("Не всі поля заповнені");
@@ -75,42 +80,51 @@ namespace QuizProgram
             {
                 for (int i = 0; i < quest.Count; i++)
                 {
-                    if (quest[i].TextQuestion == questionText.Text) { 
-                    
-                        CheckForRepeatQuestionName=true;
-                        
+                    if (quest[i].TextQuestion == questionText.Text)
+                    {
+
+                        CheckForRepeatQuestionName = true;
+                        break;
                     }
-                    break;
                 }
                 if (CheckForRepeatQuestionName == false)
                 {
 
                     if (action == "add")
                     {
-                        dataBase.Add_QuestionToDataBase(questionText.Text, topicNameText.Text, (string)lvlComboBox.SelectedValue, int.Parse((string)answerComboBox.SelectedValue));
+                        List<string> answers = new List<string> { answer1Text.Text, answer2Text.Text, answer3Text.Text, answer4Text.Text };
 
-                        List<Questions> tempQuestions = dataBase.Read_QuestionsFromDataBase(topicNameText.Text);
-                        for (int i = 0; i < tempQuestions.Count; i++)
+                        bool areAnswersUnique = answers.GroupBy(a => a).All(g => g.Count() == 1);
+
+                        if (areAnswersUnique)
                         {
-                            if (tempQuestions[i].TextQuestion == questionText.Text && tempQuestions[i].TopicName == topicNameText.Text && tempQuestions[i].DifficultyLevel == (string)lvlComboBox.SelectedValue && tempQuestions[i].RightAnswer == int.Parse((string)answerComboBox.SelectedValue))
-                            {
-                                dataBase.Add_AnswerToDataBase(tempQuestions[i].Id, 1, answer1Text.Text);
-                                dataBase.Add_AnswerToDataBase(tempQuestions[i].Id, 2, answer2Text.Text);
-                                dataBase.Add_AnswerToDataBase(tempQuestions[i].Id, 3, answer3Text.Text);
-                                dataBase.Add_AnswerToDataBase(tempQuestions[i].Id, 4, answer4Text.Text);
-                                break;
-                            }
+                            dataBase.Add_QuestionToDataBase(questionText.Text, topicNameText.Text, (string)lvlComboBox.SelectedValue, int.Parse((string)answerComboBox.SelectedValue));
+
+                            List<Questions> tempQuestions = dataBase.Read_QuestionsFromDataBase(topicNameText.Text);
+
+                            var currentQuestion = tempQuestions.FirstOrDefault(q => q.TextQuestion == questionText.Text);
+
+                            dataBase.Add_AnswerToDataBase(currentQuestion.Id, 1, answer1Text.Text);
+                            dataBase.Add_AnswerToDataBase(currentQuestion.Id, 2, answer2Text.Text);
+                            dataBase.Add_AnswerToDataBase(currentQuestion.Id, 3, answer3Text.Text);
+                            dataBase.Add_AnswerToDataBase(currentQuestion.Id, 4, answer4Text.Text);
+
+                            questionText.Text = "";
+                            topicNameText.Text = "";
+
+                            lvlComboBox.SelectedIndex = -1;
+                            answerComboBox.SelectedIndex = -1;
+
+                            answer1Text.Text = "";
+                            answer2Text.Text = "";
+                            answer3Text.Text = "";
+                            answer4Text.Text = "";
+
                         }
-                        questionText.Text = "";
-                        topicNameText.Text = "";
-
-                        lvlComboBox.SelectedIndex = -1;
-                        answerComboBox.SelectedIndex = -1;
-
-                        answer1Text.Text = "";
-                        answer2Text.Text = "";
-                        answer3Text.Text = "";
-                        answer4Text.Text = "";
+                        else
+                        {
+                            MessageBox.Show("Not unique answers");
+                        }
                     }
                     else
                     {
@@ -123,37 +137,39 @@ namespace QuizProgram
                             RightAnswer = int.Parse((string)answerComboBox.SelectedValue)
                         };
 
-                        dataBase.Update_QuestionInDataBase(questions, updateQuestion);
+                        List<string> answers = new List<string> { answer1Text.Text, answer2Text.Text, answer3Text.Text, answer4Text.Text };
 
-                        List<Answers> answers = dataBase.Read_AnswersFromDataBase(questions.Id);
+                        bool areAnswersUnique = answers.GroupBy(a => a).All(g => g.Count() == 1);
 
-                        Update_Answer(answers[0], answer1Text.Text);
-                        Update_Answer(answers[1], answer2Text.Text);
-                        Update_Answer(answers[2], answer3Text.Text);
-                        Update_Answer(answers[3], answer4Text.Text);
-                        CheckForRepeatQuestionName = false;
-                        this.Close();
+                        if (areAnswersUnique)
+                        {
+                            dataBase.Update_QuestionInDataBase(questions, updateQuestion);
 
-                        //Update_AnswerCheck(questions, answer1Text);
-                        //Update_AnswerCheck(questions, answer2Text);
-                        //Update_AnswerCheck(questions, answer3Text);
-                        //Update_AnswerCheck(questions, answer4Text);
+                            List<Answers> answersCurrent = dataBase.Read_AnswersFromDataBase(questions.Id);
 
+                            Update_Answer(answersCurrent[0], answer1Text.Text);
+                            Update_Answer(answersCurrent[1], answer2Text.Text);
+                            Update_Answer(answersCurrent[2], answer3Text.Text);
+                            Update_Answer(answersCurrent[3], answer4Text.Text);
+                            CheckForRepeatQuestionName = false;
 
+                            ChangeQuestionsWindow changeQuestionsWindow = new ChangeQuestionsWindow(currentUser);
+                            changeQuestionsWindow.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Not unique answers");
+                        }
                     }
                 }
                 else
                 {
                     MessageBox.Show("Питання з такою назвою вже є!");
                 }
-                    
-                }
-
-
             }
+        }
 
-           
-        
         private void Update_Answer(Answers answer, string text)
         {
             dataBase.Update_AnswerInDataBase(answer, new Answers
@@ -168,20 +184,5 @@ namespace QuizProgram
         {
             
         }
-
-        //private void Update_AnswerCheck(Answers currentAnswer, TextBox textBox)
-        //{
-        //    if (!string.IsNullOrWhiteSpace(textBox.Text))
-        //    {
-        //        var updateAnswer = new Answers
-        //        {
-        //            QuestionId = currentAnswer.QuestionId,
-        //            NumberAnswer = currentAnswer.NumberAnswer,
-        //            AnswerText = textBox.Text
-        //        };
-
-        //        dataBase.Update_AnswerInDataBase(currentAnswer, updateAnswer);
-        //    }
-        //}
     }
 }

@@ -36,14 +36,29 @@ namespace QuizProgram
 
         private void topicsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            questionsListBox.ItemsSource = dataBase.Read_QuestionsFromDataBase((string)topicsComboBox.SelectedValue);
+            List<Questions> questions;
+
+            questions = dataBase.Read_QuestionsFromDataBase((string)topicsComboBox.SelectedValue);
+
+            checkQuestions.Content = "";
+
+            var hardQuestion = questions.Where(q => q.DifficultyLevel == "Складний");
+            var middleQuestion = questions.Where(q => q.DifficultyLevel == "Середній");
+            var easyQuestion = questions.Where(q => q.DifficultyLevel == "Легкий");
+
+            if (questions.Count < 15 && (easyQuestion.Count() != 7 || middleQuestion.Count() != 5 || hardQuestion.Count() != 3))
+            {
+                checkQuestions.Content = $"Add questions in this topic: easy: {7 - easyQuestion.Count()} middle: {5 - middleQuestion.Count()} hard: {3 - hardQuestion.Count()}";
+
+            }
+            questionsListBox.ItemsSource = questions;
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            AddChangeQuestionWindow changeWindow = new AddChangeQuestionWindow("add");
-            changeWindow.ShowDialog();
-
+            AddChangeQuestionWindow changeWindow = new AddChangeQuestionWindow(user, "add");
+            changeWindow.Show();
+            this.Close();
 
             questionsListBox.ItemsSource = dataBase.Read_QuestionsFromDataBase((string)topicsComboBox.SelectedValue);
 
@@ -57,9 +72,10 @@ namespace QuizProgram
         {
             if (questionsListBox.SelectedIndex != -1)
             {
-                AddChangeQuestionWindow changeWindow = new AddChangeQuestionWindow("change", (Questions)questionsListBox.SelectedItem);
-                changeWindow.ShowDialog();
+                AddChangeQuestionWindow changeWindow = new AddChangeQuestionWindow(user, "change", (Questions)questionsListBox.SelectedItem);
+                changeWindow.Show();
                 questionsListBox.ItemsSource = dataBase.Read_QuestionsFromDataBase((string)topicsComboBox.SelectedValue);
+                this.Close();
             }
             else
             {
