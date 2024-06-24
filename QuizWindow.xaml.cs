@@ -34,6 +34,7 @@ namespace QuizProgram
         TimeSpan _totalTime;
         public QuizWindow(string topic, List<Questions> quiz, User user)
         {
+            this.ResizeMode = ResizeMode.NoResize;
             InitializeComponent();
             users_answers = new List<int>();
             dataBase = new DataBase();

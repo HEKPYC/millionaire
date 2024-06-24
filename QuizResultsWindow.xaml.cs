@@ -34,6 +34,7 @@ namespace QuizProgram
         ResultScore Score;
         public QuizResultsWindow(string topic, List<Questions> quiz, User user, int mark, int right_answers, List<int> users_answers, string timerValue, string avarageTime)
         {
+            this.ResizeMode = ResizeMode.NoResize;
             InitializeComponent();
             dataBase = new DataBase();
             Topic = topic;

@@ -60,6 +60,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -94,18 +95,12 @@
       <DependentUpon>EntranceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Information.cs" />
-    <Compile Include="InformationWindow.xaml.cs">
-      <DependentUpon>InformationWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Questions.cs" />
     <Compile Include="QuestionsMainWindow.xaml.cs" />
     <Compile Include="QuizResultsWindow.xaml.cs" />
     <Compile Include="QuizWindow.xaml.cs" />
     <Compile Include="RegistrationMainWindow.xaml.cs">
       <DependentUpon>RegistrationMainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RegistrationWindow.xaml.cs">
-      <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ResultScore.cs" />
     <Compile Include="User.cs" />
@@ -124,23 +119,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="InformationWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataBaseContext.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Page Include="QuestionsMainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -154,10 +137,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="RegistrationMainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RegistrationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

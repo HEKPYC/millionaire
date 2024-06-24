@@ -24,7 +24,7 @@ namespace QuizProgram
         public UserSettingsWindow(User _user)
         {
             InitializeComponent();
-
+            this.ResizeMode = ResizeMode.NoResize;
             dataBase = new DataBase();
             user = _user;
 
@@ -62,7 +62,7 @@ namespace QuizProgram
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (NameText.Text.Length > 0 && SurnameText.Text.Length > 0 && LoginText.Text.Length > 0 && PasswordText.Text.Length > 0)
+            if (NameText.Text.Length > 1 && SurnameText.Text.Length > 2 && LoginText.Text.Length > 4 && PasswordText.Text.Length > 7)
             {
                 User tempUser = new User
                 {

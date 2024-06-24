@@ -25,6 +25,7 @@ namespace QuizProgram
         string topic;
         public QuestionsMainWindow(User user)
         {
+            this.ResizeMode = ResizeMode.NoResize;
             InitializeComponent();
             dataBase = new DataBase();
             questionsUser = user;

@@ -23,14 +23,17 @@ namespace QuizProgram
         DataBase dataBase;
         public RegistrationMainWindow()
         {
+            this.ResizeMode = ResizeMode.NoResize;
             InitializeComponent();
             dataBase = new DataBase();
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            dataBase.Add_UserToDataBase(SurnameText.Text, NameText.Text, LoginText.Text, PasswordText.Text, (string)statusComboBox.SelectedValue);
-
+            if (SurnameText.Text.Length > 1 && NameText.Text.Length > 2 && LoginText.Text.Length > 4 && PasswordText.Text.Length > 7)
+            {
+                dataBase.Add_UserToDataBase(SurnameText.Text, NameText.Text, LoginText.Text, PasswordText.Text, (string)statusComboBox.SelectedValue);
+           
             User user = new User
             {
                 Surname = SurnameText.Text,
@@ -39,7 +42,6 @@ namespace QuizProgram
                 Password = PasswordText.Text,
                 Status = (string)statusComboBox.SelectedValue
             };
-
             /*List<User> users = dataBase.Read_UserFromDataBase((string)statusComboBox.SelectedValue);
             for (int i = 0; i < users.Count; i++)
             {
@@ -48,20 +50,26 @@ namespace QuizProgram
                     user = users[i];
                 }
             }*/
+           
+                if ((string)statusComboBox.SelectedValue == "admin")
+                {
+                    ChangeQuestionsWindow changeQuestionsWindow = new ChangeQuestionsWindow(user);
+                    changeQuestionsWindow.Show();
+                    this.Close();
+                }
+                else
+                {
 
-            if ((string)statusComboBox.SelectedValue == "admin")
-            {
-                ChangeQuestionsWindow changeQuestionsWindow = new ChangeQuestionsWindow(user);
-                changeQuestionsWindow.Show();
-                this.Close();
+                    QuestionsMainWindow questionsWindow = new QuestionsMainWindow(user);
+                    questionsWindow.Show();
+                    this.Close();
+                }
             }
             else
             {
-
-                QuestionsMainWindow questionsWindow = new QuestionsMainWindow(user);
-                questionsWindow.Show();
-                this.Close();
+                MessageBox.Show("Не всі поля заповнені");
             }
+            
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

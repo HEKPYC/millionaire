@@ -25,7 +25,7 @@ namespace QuizProgram
         public ChangeQuestionsWindow(User user)
         {
             InitializeComponent();
-
+            this.ResizeMode = ResizeMode.NoResize;
             dataBase = new DataBase();
 
             List<string> topics = dataBase.Read_TopicFromDataBase();

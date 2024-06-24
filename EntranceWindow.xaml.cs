@@ -22,6 +22,7 @@ namespace QuizProgram
         DataBase dataBase;
         public EntranceWindow()
         {
+            this.ResizeMode = ResizeMode.NoResize;
             InitializeComponent();
             dataBase = new DataBase();
         }
@@ -71,5 +72,7 @@ namespace QuizProgram
             registrationWindow.Show();
             this.Close();
         }
+
+      
     }
 }
