@@ -185,7 +185,6 @@ namespace QuizProgram
             Answer2_Button.IsEnabled = true;
             Answer3_Button.IsEnabled = true;
             Answer4_Button.IsEnabled = true;
-
             Confirm_Button.IsEnabled = true;
         }
 

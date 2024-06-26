@@ -37,7 +37,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20" SnapsToDevicePixels="true">
+                        <Border x:Name="border" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -326,6 +326,61 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="FocusVisual5">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background5" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border5" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background5" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border5" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background5" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border5" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background5" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border5" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground5" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle6" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual5}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background5}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border5}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background5}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border5}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background5}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border5}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background5}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border5}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground5}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid Height="468" VerticalAlignment="Top" HorizontalAlignment="Right" Width="800">
         <Grid.Background>
@@ -338,11 +393,11 @@
         <Button Style="{DynamicResource ButtonStyle3}" x:Name="Answer2_Button" Content="Answer2" HorizontalAlignment="Left" Height="40" Margin="420,261,0,0" VerticalAlignment="Top" Width="150" Click="Answer2_Button_Click" Background="#FF1F463E" Foreground="White" BorderBrush="White" FontFamily="Palatino Linotype" FontSize="14"/>
         <Button Style="{DynamicResource ButtonStyle4}" x:Name="Answer3_Button" Content="Answer3" HorizontalAlignment="Left" Height="40" Margin="215,325,0,0" VerticalAlignment="Top" Width="150" Click="Answer3_Button_Click" Background="#FF1F463E" Foreground="White" BorderBrush="White" FontFamily="Palatino Linotype" FontSize="14"/>
         <Button Style="{DynamicResource ButtonStyle5}" x:Name="Answer4_Button" Content="Answer4" HorizontalAlignment="Left" Height="40" Margin="420,325,0,0" VerticalAlignment="Top" Width="150" Click="Answer4_Button_Click" Background="#FF1F463E" BorderBrush="White" Foreground="White" FontFamily="Palatino Linotype" FontSize="14"/>
-        <Button Style="{DynamicResource ButtonStyle1}" x:Name="Confirm_Button" Content="Підтвердити" IsEnabled="False" HorizontalAlignment="Left" Height="30" Margin="638,391,0,0" VerticalAlignment="Top" Width="125" Click="Confirm_Button_Click" Background="White" Foreground="#FF1F463E" BorderBrush="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14"/>
         <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="Question" IsReadOnly="True" Focusable="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="105" Margin="0,129,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="468" Background="#FFD4E9ED" Foreground="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14" BorderBrush="#FF1F463E" />
         <TextBlock x:Name="TimerTextBlock" HorizontalAlignment="Left" Height="26" Margin="692,22,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="71" Foreground="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14"/>
         <Label Content="Quiz" HorizontalAlignment="Center" Margin="0,22,0,0" VerticalAlignment="Top" Foreground="#FF1F463E" FontFamily="Lucida Handwriting" FontSize="40" Width="128" Height="70" RenderTransformOrigin="0.635,0.518"/>
         <Label Content="Питання" HorizontalAlignment="Center" Margin="0,90,0,0" VerticalAlignment="Top" FontFamily="Palatino Linotype" Foreground="#FF1F463E" FontSize="20" Height="39"/>
+        <Button Style="{DynamicResource ButtonStyle6}" x:Name="Confirm_Button" Content="Підтвердити" HorizontalAlignment="Left" Margin="613,380,0,0" VerticalAlignment="Top" Click="Confirm_Button_Click" Height="30" Width="150" Background="#FF1F463E" Foreground="White" BorderBrush="White" FontFamily="Palatino Linotype" FontSize="14"/>
 
     </Grid>
 </Window>

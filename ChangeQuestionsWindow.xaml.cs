@@ -48,7 +48,7 @@ namespace QuizProgram
 
             if (questions.Count < 15 && (easyQuestion.Count() != 7 || middleQuestion.Count() != 5 || hardQuestion.Count() != 3))
             {
-                checkQuestions.Content = $"Add questions in this topic: easy: {7 - easyQuestion.Count()} middle: {5 - middleQuestion.Count()} hard: {3 - hardQuestion.Count()}";
+                checkQuestions.Content = $"Залишилось додати питань: легких: {7 - easyQuestion.Count()} сердніх: {5 - middleQuestion.Count()} складних: {3 - hardQuestion.Count()}";
 
             }
             questionsListBox.ItemsSource = questions;

@@ -95,11 +95,12 @@ namespace QuizProgram
                 }
                 QuizWindow quizWindow = new QuizWindow(topic, Quiz, questionsUser);
                 quizWindow.ShowDialog();
-                Close();
+                this.Close();
             }
             else
             {
-                Start_Quiz_Button.Content = "Неможливо запустити вікторину за цією тематикою(замало питань).";
+                Start_Quiz_Button.Content = "Помилка";
+                MessageBox.Show("Неможливо запустити вікторину за цією тематикою(замало питань)");
                 Start_Quiz_Button.IsEnabled = false;
             }
         }
@@ -119,7 +120,7 @@ namespace QuizProgram
             topic = comboBox.SelectedItem as string;
 
             Start_Quiz_Button.IsEnabled = true;
-            Start_Quiz_Button.Content = "Start Quiz";
+            
         }
 
         private void settingsButton_Click(object sender, RoutedEventArgs e)
