@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:QuizProgram"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="QuizProgram.AddChangeQuestionWindow"
         mc:Ignorable="d"
-        Title="AddChangeQuestionWindow" Height="485" Width="730"
+        Title="AddChangeQuestionWindow" Height="525" Width="730"
      Closing="Window_Closing" WindowStartupLocation="CenterScreen"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Window.Resources>
@@ -945,7 +945,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Height="475" VerticalAlignment="Top" HorizontalAlignment="Center" Width="730">
+    <Grid Height="509" VerticalAlignment="Top" HorizontalAlignment="Center" Width="730">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF63C3BC" Offset="0.131"/>
@@ -970,7 +970,7 @@
         <Label Content="3." HorizontalAlignment="Left" Margin="411,302,0,0" VerticalAlignment="Top" Width="22" Foreground="White"/>
         <Label Content="4." HorizontalAlignment="Left" Margin="413,358,0,0" VerticalAlignment="Top" Width="22" Foreground="White"/>
         <Button Style="{DynamicResource ButtonStyle1}" x:Name="backButton" Content="Повернутися" HorizontalAlignment="Left" Margin="45,30,0,0" VerticalAlignment="Top" Width="115" Click="backButton_Click" BorderBrush="White" Foreground="White" Background="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14" Height="30"/>
-        <Button Style="{DynamicResource ButtonStyle2}" x:Name="okButton" Content="Додати" HorizontalAlignment="Center" Margin="0,406,0,0" VerticalAlignment="Top" Width="114" Click="okButton_Click" Foreground="White" BorderBrush="White" Background="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14" Height="30"/>
+        <Button Style="{DynamicResource ButtonStyle2}" x:Name="okButton" Content="Додати" HorizontalAlignment="Center" Margin="0,459,0,0" VerticalAlignment="Top" Width="114" Click="okButton_Click" Foreground="White" BorderBrush="White" Background="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14" Height="30"/>
         <ComboBox Style="{DynamicResource ComboBoxStyle2}" x:Name="answerComboBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="142,354,0,0" VerticalAlignment="Top" Width="230" FontFamily="Palatino Linotype" FontSize="14" Foreground="#FF1F463E" Height="30">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
@@ -996,5 +996,7 @@
         </ComboBox>
         <Label Content="Quiz" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Foreground="#FF1F463E" FontFamily="Lucida Handwriting" FontSize="40" Width="128" Height="70"/>
         <Label Content="Додавання питань&#xA;" HorizontalAlignment="Center" Margin="0,88,0,0" VerticalAlignment="Top" FontFamily="Palatino Linotype" Foreground="#FF1F463E" FontSize="20" Height="39"/>
+        <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="informationText" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,415,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" FontFamily="Palatino Linotype" FontSize="14" Background="#FFD4E9ED" Foreground="#FF1F463E" Height="30"/>
+        <Label Content="Пояснення" HorizontalAlignment="Left" Margin="142,415,0,0" VerticalAlignment="Top" Width="85" Foreground="White" FontFamily="Palatino Linotype" FontSize="14"/>
     </Grid>
 </Window>

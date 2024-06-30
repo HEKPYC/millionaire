@@ -21,6 +21,7 @@ namespace QuizProgram
     {
         DataBase dataBase;
         public User user;
+        string topic;
         public UserSettingsWindow(User _user)
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace QuizProgram
             StatusText.Text = user.Status;
             StatusText.IsEnabled = false;
 
-            List<ResultScore> results = dataBase.Read_ResultScoreFromDataBase();
+            List<ResultScore> results = dataBase.Read_ResultScoreFromDataBase(topic);
             for (int i = 0; i < results.Count; i++)
             {
                 if(user.Login == results[i].Username)

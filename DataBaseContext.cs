@@ -29,7 +29,7 @@ namespace QuizProgram
             modelBuilder.Entity<Answers>().HasKey(c => c.Id);
             modelBuilder.Entity<Information>().HasKey(c => c.Id);
             modelBuilder.Entity<User>().HasKey(c => c.Id);
-            modelBuilder.Entity<ResultScore>().HasKey(c => c.Username);
+            modelBuilder.Entity<ResultScore>().HasKey(c => c.Id);
         }
     }
 }

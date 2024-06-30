@@ -223,13 +223,37 @@ namespace QuizProgram
             }
         }
 
-        public List<Information> Read_InformationFromDataBase(int questionId)
+        public Information Read_UpdateInformationFromDataBase(int questionId)
         {
-            List<Information> information;
+            Information information;
 
             using (var context = new DataBaseContext())
             {
-                information = context.Information.Where(q => q.QuestionId == questionId).ToList();
+                information = context.Information.FirstOrDefault(q => q.QuestionId == questionId);
+
+                if (information == null)
+                {
+                    information = new Information
+                    {
+                        QuestionId = questionId,
+                        InformationQuestion = ""
+                    };
+
+                    context.Information.Add(information);
+                    context.SaveChanges();
+                }
+            }
+
+            return information;
+        }
+
+        public Information Read_InformationFromDataBase(int questionId)
+        {
+            Information information;
+
+            using (var context = new DataBaseContext())
+            {
+                information = context.Information.FirstOrDefault(q => q.QuestionId == questionId);
             }
 
             return information;
@@ -415,7 +439,7 @@ namespace QuizProgram
         }
 
         //string username
-        public void Add_ResultScoreToDataBase(string username, int score)
+        public void Add_ResultScoreToDataBase(string username, int score, string topic)
         {
             using(var context = new DataBaseContext())
             {
@@ -424,7 +448,8 @@ namespace QuizProgram
                     var resultScore = new ResultScore
                     {
                         Username = username,
-                        Score = score
+                        Score = score,
+                        Topic = topic
                     };
 
                     context.Results.Add(resultScore);
@@ -438,13 +463,13 @@ namespace QuizProgram
             }
         }
 
-        public List<ResultScore> Read_ResultScoreFromDataBase()
+        public List<ResultScore> Read_ResultScoreFromDataBase(string Topic)
         {
             List<ResultScore> resultScore;
 
             using (var context = new DataBaseContext())
             {
-                resultScore = context.Results.ToList();
+                resultScore = context.Results.Where(q => q.Topic == Topic).ToList();
             }
 
             return resultScore;
@@ -463,6 +488,7 @@ namespace QuizProgram
                         if (updateResultScore.Score > currentResultScore.Score)
                         {
                             resultScore.Score = updateResultScore.Score;
+                            resultScore.Topic = updateResultScore.Topic;
                         }
                     }
 

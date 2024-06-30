@@ -56,6 +56,12 @@ namespace QuizProgram
                 answer2Text.Text = answers[1].AnswerText;
                 answer3Text.Text = answers[2].AnswerText;
                 answer4Text.Text = answers[3].AnswerText;
+
+                Information information = dataBase.Read_InformationFromDataBase(questions.Id);
+                if (information != null)
+                {
+                    informationText.Text = information.InformationQuestion;
+                }
             }
         }
 
@@ -109,6 +115,8 @@ namespace QuizProgram
                             dataBase.Add_AnswerToDataBase(currentQuestion.Id, 3, answer3Text.Text);
                             dataBase.Add_AnswerToDataBase(currentQuestion.Id, 4, answer4Text.Text);
 
+                            dataBase.Add_InformationToDataBase(currentQuestion.Id, informationText.Text);
+
                             questionText.Text = "";
                             topicNameText.Text = "";
 
@@ -120,6 +128,7 @@ namespace QuizProgram
                             answer3Text.Text = "";
                             answer4Text.Text = "";
 
+                            informationText.Text = "";
                         }
                         else
                         {
@@ -151,6 +160,7 @@ namespace QuizProgram
                             Update_Answer(answersCurrent[1], answer2Text.Text);
                             Update_Answer(answersCurrent[2], answer3Text.Text);
                             Update_Answer(answersCurrent[3], answer4Text.Text);
+
                             CheckForRepeatQuestionName = false;
 
                             ChangeQuestionsWindow changeQuestionsWindow = new ChangeQuestionsWindow(currentUser);
@@ -167,6 +177,21 @@ namespace QuizProgram
                 {
                     MessageBox.Show("Питання з такою назвою вже є!");
                 }
+            }
+
+            if (action.Equals("change") && !string.IsNullOrWhiteSpace(informationText.Text))
+            {
+                Information information = dataBase.Read_UpdateInformationFromDataBase(questions.Id);
+
+                Information updateInformation = new Information
+                {
+                    QuestionId = questions.Id,
+                    InformationQuestion = informationText.Text
+                };
+
+                dataBase.Update_InformationInDataBase(information, updateInformation);
+
+                MessageBox.Show("The information was updated");
             }
         }
 

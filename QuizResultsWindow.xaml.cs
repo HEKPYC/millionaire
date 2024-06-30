@@ -47,7 +47,7 @@ namespace QuizProgram
             _rankBuilder = new StringBuilder();
             Time_Spent = timerValue;
             Avarage_Time = avarageTime;
-            List<ResultScore> results = dataBase.Read_ResultScoreFromDataBase();
+            List<ResultScore> results = dataBase.Read_ResultScoreFromDataBase(Topic);
 
             bool check = false;
 
@@ -62,11 +62,11 @@ namespace QuizProgram
 
             if (check == false)
             {
-                dataBase.Add_ResultScoreToDataBase(questionsUser.Login, mark);
+                dataBase.Add_ResultScoreToDataBase(questionsUser.Login, mark, Topic);
             }
             else
             {
-                dataBase.Update_ResultScoreInDataBase(Score, new ResultScore { Username = questionsUser.Login, Score = mark });
+                dataBase.Update_ResultScoreInDataBase(Score, new ResultScore { Username = questionsUser.Login, Score = mark, Topic = Topic });
             }
 
             void AddToRank(string text)
@@ -74,7 +74,7 @@ namespace QuizProgram
                 _rankBuilder.AppendLine(text);
                 Ranking.Text = _rankBuilder.ToString();
             }
-            List<ResultScore> users_results = dataBase.Read_ResultScoreFromDataBase();
+            List<ResultScore> users_results = dataBase.Read_ResultScoreFromDataBase(Topic);
 
             users_results = users_results.OrderByDescending(x => x.Score).ToList();
             for (int i = 0; i < users_results.Count; i++)
@@ -107,6 +107,16 @@ namespace QuizProgram
                 }
                 AddToText("Правильна відповідь: " + answers[Quiz[question_index].RightAnswer - 1].AnswerText + "\n");
                 AddToText("Ваша відповідь: " + answers[Users_answers[question_index] - 1].AnswerText + "\n");
+
+                if (Quiz[question_index].RightAnswer != Users_answers[question_index])
+                {
+                    Information Info = dataBase.Read_InformationFromDataBase(Quiz[question_index].Id);
+                    if (Info != null)
+                    {
+                        AddToText("Роз'яснення щодо правильної відповіді: " + Info.InformationQuestion + "\n");
+                    }
+                }
+
                 question_index++;
             }
 

@@ -10,5 +10,7 @@ namespace QuizProgram
     {
         public string Username { get; set; }
         public int Score { get; set; }
+        public string Topic { get; set; }
+        public int Id { get; set; }
     }
 }
