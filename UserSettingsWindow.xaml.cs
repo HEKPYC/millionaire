@@ -20,8 +20,9 @@ namespace QuizProgram
     public partial class UserSettingsWindow : Window
     {
         DataBase dataBase;
-        public User user;
         string topic;
+        int maxScore;
+        public User user;
         public UserSettingsWindow(User _user)
         {
             InitializeComponent();
@@ -35,19 +36,6 @@ namespace QuizProgram
             PasswordText.Text = user.Password;
             StatusText.Text = user.Status;
             StatusText.IsEnabled = false;
-
-            List<ResultScore> results = dataBase.Read_ResultScoreFromDataBase(topic);
-            for (int i = 0; i < results.Count; i++)
-            {
-                if(user.Login == results[i].Username)
-                {
-                    maxScoreLabel.Content = results[i].Score;
-                }
-                else if (i == results.Count - 1)
-                {
-                    maxScoreLabel.Content = "0";
-                }
-            }
 
             if (user.Status == "admin")
             {
@@ -81,6 +69,34 @@ namespace QuizProgram
             {
                 MessageBox.Show("Не всі поля заповнені");
             }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            List<string> topics = dataBase.Read_TopicFromDataBase();
+            scoreComboBox.ItemsSource = topics;
+            topic = scoreComboBox.SelectedItem as string;
+            List<ResultScore> results = dataBase.Read_ResultScoreFromDataBase(Topic);
+            ResultScore Score;
+            bool check = false;
+            foreach (ResultScore score in results)
+            {
+                if (user.Login.Equals(score.Username))
+                {
+                    maxScore = score.Score;
+                    check = true;
+                    break;
+                }
+            }
+            if (check == false)
+            {
+                maxScoreLabel.Content = "0";
+            }
+            else
+            {
+                maxScoreLabel.Content = maxScore.ToString();
+            }
+            
         }
     }
 }

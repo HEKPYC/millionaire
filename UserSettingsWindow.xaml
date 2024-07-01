@@ -372,17 +372,17 @@
                 <GradientStop Color="#FF0C0029" Offset="0.992"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="NameText"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="325,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="30" Background="#FFD4E9ED" Foreground="#FF1F463E" FontSize="14" FontFamily="Palatino Linotype" Cursor="IBeam"/>
-        <TextBox Style="{DynamicResource TextBoxStyle2}" x:Name="SurnameText"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="325,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="30" Background="#FFD4E9ED" Foreground="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14" Cursor="IBeam"/>
-        <TextBox Style="{DynamicResource TextBoxStyle3}" x:Name="LoginText" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Left" Margin="325,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="30" Background="#FFD4E9ED" Foreground="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14" Cursor="IBeam"/>
-        <TextBox Style="{DynamicResource TextBoxStyle4}" x:Name="PasswordText"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="325,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="30" Background="#FFD4E9ED" Foreground="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14" Cursor="IBeam"/>
-        <TextBox Style="{DynamicResource TextBoxStyle5}" x:Name="StatusText"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="325,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="30" Background="#FFD4E9ED" Foreground="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14" Cursor="IBeam"/>
+        <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="NameText"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="327,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="30" Background="#FFD4E9ED" Foreground="#FF1F463E" FontSize="14" FontFamily="Palatino Linotype" Cursor="IBeam"/>
+        <TextBox Style="{DynamicResource TextBoxStyle2}" x:Name="SurnameText"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="327,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="30" Background="#FFD4E9ED" Foreground="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14" Cursor="IBeam"/>
+        <TextBox Style="{DynamicResource TextBoxStyle3}" x:Name="LoginText" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Left" Margin="327,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="30" Background="#FFD4E9ED" Foreground="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14" Cursor="IBeam"/>
+        <TextBox Style="{DynamicResource TextBoxStyle4}" x:Name="PasswordText"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="327,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="30" Background="#FFD4E9ED" Foreground="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14" Cursor="IBeam"/>
+        <TextBox Style="{DynamicResource TextBoxStyle5}" x:Name="StatusText"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="327,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="30" Background="#FFD4E9ED" Foreground="#FF1F463E" FontFamily="Palatino Linotype" FontSize="14" Cursor="IBeam"/>
 
-        <Label Content="Ім'я" HorizontalAlignment="Left" Margin="175,157,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontFamily="Palatino Linotype" FontSize="14"/>
-        <Label Content="Прізвище" HorizontalAlignment="Left" Margin="175,192,0,0" VerticalAlignment="Top" Width="90" FontFamily="Palatino Linotype" FontSize="14" Foreground="White"/>
-        <Label Content="E-mail" HorizontalAlignment="Left" Margin="175,227,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontFamily="Palatino Linotype" FontSize="14"/>
-        <Label Content="Пароль" HorizontalAlignment="Left" Margin="175,262,0,0" VerticalAlignment="Top" Width="90" FontFamily="Palatino Linotype" FontSize="14" Foreground="White"/>
-        <Label Content="Статус" HorizontalAlignment="Left" Margin="175,298,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontFamily="Palatino Linotype" FontSize="14" RenderTransformOrigin="0.5,0.5">
+        <Label Content="Ім'я" HorizontalAlignment="Left" Margin="177,125,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontFamily="Palatino Linotype" FontSize="14"/>
+        <Label Content="Прізвище" HorizontalAlignment="Left" Margin="177,160,0,0" VerticalAlignment="Top" Width="90" FontFamily="Palatino Linotype" FontSize="14" Foreground="White"/>
+        <Label Content="E-mail" HorizontalAlignment="Left" Margin="177,194,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontFamily="Palatino Linotype" FontSize="14"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="177,230,0,0" VerticalAlignment="Top" Width="90" FontFamily="Palatino Linotype" FontSize="14" Foreground="White"/>
+        <Label Content="Статус" HorizontalAlignment="Left" Margin="177,266,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontFamily="Palatino Linotype" FontSize="14" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -392,11 +392,13 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Button Style="{DynamicResource ButtonStyle2}" x:Name="saveButton" Content="Зберегти" HorizontalAlignment="Center" Margin="0,390,0,0" VerticalAlignment="Top" Height="30" Width="116" Click="saveButton_Click" FontFamily="Palatino Linotype" FontSize="14" Background="#FF1F463E" Foreground="White" BorderBrush="White" Cursor="Hand"/>
+        <Button Style="{DynamicResource ButtonStyle2}" x:Name="saveButton" Content="Зберети" HorizontalAlignment="Center" Margin="0,390,0,0" VerticalAlignment="Top" Height="30" Width="116" Click="saveButton_Click" FontFamily="Palatino Linotype" FontSize="14" Background="#FF1F463E" Foreground="White" BorderBrush="White" Cursor="Hand"/>
         <Button Style="{DynamicResource ButtonStyle1}" x:Name="backButton" Content="Повернутися" HorizontalAlignment="Left" Margin="30,45,0,0" VerticalAlignment="Top" Height="30" Width="115" Click="backButton_Click" FontFamily="Palatino Linotype" FontSize="14" Background="#FF1F463E" BorderBrush="White" Foreground="White" Cursor="Hand"/>
         <Label x:Name="textLabel" Content="Максимальний бал" HorizontalAlignment="Left" Margin="167,350,0,0" VerticalAlignment="Top" Width="138" FontFamily="Palatino Linotype" FontSize="14" Foreground="White"/>
         <Label x:Name="maxScoreLabel" Content="Максимальний бал" HorizontalAlignment="Left" Margin="408,350,0,0" VerticalAlignment="Top" Width="139" Foreground="White" FontFamily="Palatino Linotype" FontSize="14"/>
         <Label Content="Quiz" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" Foreground="#FF1F463E" FontFamily="Lucida Handwriting" FontSize="40" Width="128" Height="70"/>
-        <Label Content="Налаштування" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" FontFamily="Palatino Linotype" Foreground="#FF1F463E" FontSize="20" Height="39"/>
+        <Label Content="Налаштування" HorizontalAlignment="Center" Margin="0,86,0,0" VerticalAlignment="Top" FontFamily="Palatino Linotype" Foreground="#FF1F463E" FontSize="20" Height="39"/>
+        <ComboBox x:Name="scoreComboBox"  HorizontalAlignment="Left" Height="23" Margin="412,322,0,0" VerticalAlignment="Top" Width="129" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Label x:Name="Subject" Content="Предмет" HorizontalAlignment="Left" Margin="167,320,0,0" VerticalAlignment="Top" Width="138" FontFamily="Palatino Linotype" FontSize="14" Foreground="White"/>
     </Grid>
 </Window>
