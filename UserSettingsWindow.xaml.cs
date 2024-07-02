@@ -41,7 +41,12 @@ namespace QuizProgram
             {
                 maxScoreLabel.Visibility = Visibility.Hidden;
                 textLabel.Visibility = Visibility.Hidden;
+                Subject.Visibility = Visibility.Hidden;
+                scoreComboBox.Visibility = Visibility.Hidden;
             }
+
+            List<string> topics = dataBase.Read_TopicFromDataBase();
+            scoreComboBox.ItemsSource = topics;
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
@@ -73,10 +78,8 @@ namespace QuizProgram
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            List<string> topics = dataBase.Read_TopicFromDataBase();
-            scoreComboBox.ItemsSource = topics;
             topic = scoreComboBox.SelectedItem as string;
-            List<ResultScore> results = dataBase.Read_ResultScoreFromDataBase(Topic);
+            List<ResultScore> results = dataBase.Read_ResultScoreFromDataBase(topic);
             ResultScore Score;
             bool check = false;
             foreach (ResultScore score in results)

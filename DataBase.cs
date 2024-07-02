@@ -58,8 +58,13 @@ namespace QuizProgram
                     {
                         Delete_AnswersFromDataBase(questionId);
                         Delete_InformationFromDataBase(questionDelete);
+
+                        //Delete_ResultScore(questionDelete.TopicName);
                         context.Questions.Remove(questionDelete);
+
                         context.SaveChanges();
+
+                        Delete_ResultScore(questionDelete.TopicName);
 
                         MessageBox.Show("Question was deleted");
                     }
@@ -473,6 +478,37 @@ namespace QuizProgram
             }
 
             return resultScore;
+        }
+
+        public void Delete_ResultScore(string topic)
+        {
+            using (var context = new DataBaseContext())
+            {
+                try
+                {
+                    var questions = Read_QuestionsFromDataBase(topic);
+
+                    if (questions.Count == 0)
+                    {
+                        var results = context.Results.Where(q => q.Topic == topic).ToList();
+
+                        if (results != null)
+                        {
+                            context.Results.RemoveRange(results);
+                            context.SaveChanges();
+                            //MessageBox.Show("Information was delete");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Results was not found");
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
+            }
         }
 
         public void Update_ResultScoreInDataBase(ResultScore currentResultScore, ResultScore updateResultScore)

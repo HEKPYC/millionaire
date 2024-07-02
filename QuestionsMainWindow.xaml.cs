@@ -136,5 +136,11 @@ namespace QuizProgram
             en.Show();
             this.Close();
         }
+
+        private void informationButton_Click(object sender, RoutedEventArgs e)
+        {
+            DeveloperInformation developerInformation = new DeveloperInformation();
+            developerInformation.Show();
+        }
     }
 }
